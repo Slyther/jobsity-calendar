@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import weatherReducer from './weatherReducer';
+import remindersReducer from './remindersReducer';
+import citiesReducer from './citiesReducer';
 
 export default combineReducers({
-    weather: weatherReducer
+    reminders: remindersReducer,
+    cities: citiesReducer
 });

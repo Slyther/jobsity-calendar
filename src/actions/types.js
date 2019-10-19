@@ -1,2 +1,4 @@
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 export const NEW_REMINDER = 'NEW_REMINDER';
+export const EDIT_REMINDER = 'EDIT_REMINDER';
+export const FETCH_CITIES = 'FETCH_CITIES';
