@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Container>
-          <CalendarView></CalendarView>
-          <ReminderForm></ReminderForm>
+          <CalendarView/>
+          <ReminderForm/>
         </Container>
       </Provider>
     );

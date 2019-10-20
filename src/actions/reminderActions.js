@@ -1,4 +1,4 @@
-import { FETCH_WEATHER, NEW_REMINDER, EDIT_REMINDER } from './types';
+import { FETCH_WEATHER, NEW_REMINDER, EDIT_REMINDER, DELETE_REMINDERS } from './types';
 
 export const fetchWeather = (cityId) => (dispatch) => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast/?units=metric&id=${cityId}&appid=1c0e103c32f64cd4428126e2363e482c`)
@@ -21,4 +21,11 @@ export const postReminder = (reminder) => (dispatch) => {
             payload: reminder
         });
     }
+}
+
+export const deleteReminders = (date) => (dispatch) => {
+    dispatch({
+        type: DELETE_REMINDERS,
+        payload: date
+    });
 }

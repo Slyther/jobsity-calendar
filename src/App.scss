@@ -25,7 +25,7 @@
   max-width: 1440px;
   margin: 0 auto;
   height: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 0;
   }
 }
@@ -75,11 +75,19 @@ textarea {
 
 .react-calendar {
   width: 1050px;
+  border: none;
   margin: 50px auto;
   .react-calendar__navigation__label{
     &:disabled {
       background: white;
+      color: black;
     }
+  }
+  .react-calendar__month-view__days {
+    border: 1px solid black;
+  }
+  .react-calendar__navigation__arrow:focus {
+    background: white !important;
   }
   .react-calendar__tile {
     height: 150px;
@@ -90,11 +98,17 @@ textarea {
       top: 15px;
       position: absolute;
       left: 15px;
-      @media (max-width: 768px) {
-        font-size: 12px;
-        top: 5px;
-        left: 5px;
-      }
+      z-index: 1;
+    }
+    .today {
+      background: rgb(35, 139, 244);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      top: 11px;
+      left: 11px;
+      z-index: 0;
+      position: absolute;
     }
     &:disabled {
       background: white;
@@ -107,8 +121,12 @@ textarea {
     &.react-calendar__month-view__days__day--neighboringMonth{
       color: rgb(109, 109, 109);
     }
+    // &--active,  &--active:focus {
+    //   background: white;
+    //   color: black
+    // }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .react-calendar__tile {
       abbr {
         font-size: 12px;
@@ -116,6 +134,12 @@ textarea {
         left: 5px;
       }
       height: 100px;
+      .today {
+        width: 20px;
+        height: 20px;
+        top: 4px;
+        left: 2px;
+      }
     }
     margin-top: 25px;
     margin-bottom: 25px;
@@ -125,7 +149,7 @@ textarea {
 .add-reminder {
   margin: 0 auto 50px;
   display: block;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin-bottom: 25px;
   }
 }
@@ -134,18 +158,21 @@ textarea {
   position: absolute;
   width: 100%;
   left: 0px;
-  top: 35px;
+  top: 36px;
   .reminder-element {
     width: 100%;
     height: 17px;
     padding: 0 5px;
     font-size: 12px;
-    text-overflow: ellipsis;
     overflow: hidden;
-    text-align: center;
+    .reminder-title {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      text-align: center;
+    }
   }
-  @media (max-width: 768px) {
-    top: 20px;
+  @media (max-width: 767px) {
+    top: 23px;
   }
 }
 
@@ -174,4 +201,31 @@ textarea {
   border-radius: 5px;
   position: relative;
   top: 7px;
+}
+
+.hide-mobile {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.delete-date-reminders {
+  position: absolute;
+  font-size: 12px;
+  width: 58%;
+  left: 42px;
+  top: 14px;
+  height: 19px;
+  padding: 0;
+  &:before {
+    content: "Clear Day";
+  }
+  @media (max-width: 767px) {
+    top: 4px;
+    left: 25px;
+    width: 40%;
+    &:before {
+      content: "X";
+    }
+  }
 }

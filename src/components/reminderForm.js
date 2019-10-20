@@ -20,7 +20,7 @@ class ReminderForm extends Component {
       selectedTime: moment().hour(0).minute(0),
       reminderId: -1,
       reminderColor: '#007bff',
-      comment: '',
+      title: '',
     }
   }
   componentDidMount() {
@@ -35,7 +35,7 @@ class ReminderForm extends Component {
         selectedTime: moment(props.currentReminder.time),
         reminderId: props.currentReminder.reminderId,
         reminderColor: props.currentReminder.reminderColor,
-        comment: props.currentReminder.comment,
+        title: props.currentReminder.title,
       };
     }
     return null;
@@ -76,7 +76,7 @@ class ReminderForm extends Component {
       time: this.state.selectedTime.format('h:mm A'),
       city: this.state.selectedCity[0].name,
       cityId: this.state.selectedCity[0].id,
-      comment: this.state.comment,
+      title: this.state.title,
       reminderId: this.state.reminderId,
       reminderColor: this.state.reminderColor,
       forecast: []
@@ -87,7 +87,7 @@ class ReminderForm extends Component {
       selectedTime: moment().hour(0).minute(0),
       reminderId: -1,
       reminderColor: '#007bff',
-      comment: '',
+      title: '',
     }, () => {
       this.props.postReminder(reminder);
       this.props.fetchWeather(reminder.cityId);
@@ -127,14 +127,14 @@ class ReminderForm extends Component {
               }
             </Col>
           </Form.Group>
-          <Form.Group as={Row} controlId="comment">
-            <Form.Label column sm={4}>Comment:</Form.Label>
+          <Form.Group as={Row} controlId="title">
+            <Form.Label column sm={4}>Title:</Form.Label>
             <Col sm={8}>
             <Form.Control
               onChange={this.handleChange}
-              value={this.state.comment}
+              value={this.state.title}
               as="textarea"
-              placeholder="Write a reminder comment (max 30 characters)..."
+              placeholder="Write a reminder title (max 30 characters)..."
               maxLength={30}
               rows={2}
               required>
