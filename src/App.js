@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
+import CalendarView from './components/calendarView';
 import ReminderForm from './components/reminderForm';
-import { Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap';
 import './App.scss';
 
 class App extends Component {
@@ -10,7 +11,8 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Container>
-        <ReminderForm></ReminderForm>
+          <CalendarView></CalendarView>
+          <ReminderForm></ReminderForm>
         </Container>
       </Provider>
     );

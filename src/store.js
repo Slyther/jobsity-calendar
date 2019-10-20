@@ -4,7 +4,9 @@ import rootReducer from './reducers';
 
 const initialState = {
     cities: [],
-    reminders: []
+    reminders: [],
+    currentReminder: {reminderId: -1},
+    showModal: false
 };
 
 const middleWare = [thunk];
@@ -14,7 +16,7 @@ const store = createStore(
     initialState, 
     compose(
         applyMiddleware(...middleWare),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
     )
 );
 
