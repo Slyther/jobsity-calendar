@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CalendarView from './components/calendarView';
 import DayView from './components/dayView';
@@ -16,6 +17,10 @@ class App extends Component {
       </Container>
     );
   }
+}
+
+App.propTypes = {
+  currentView: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({

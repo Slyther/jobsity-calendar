@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 
 const ConfirmationModal = (props) => {
@@ -33,6 +34,19 @@ const ConfirmationModal = (props) => {
       </Modal.Footer>
     </Modal>
   );
+};
+
+ConfirmationModal.propTypes = {
+  showConfirmationModal: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  deleteAll: PropTypes.bool,
+  onDeleteAll: PropTypes.func.isRequired,
+  onDeleteOne: PropTypes.func
+};
+
+ConfirmationModal.defaultProps = {
+  deleteAll: true,
+  onDeleteOne: (f) => f
 };
 
 export default ConfirmationModal;

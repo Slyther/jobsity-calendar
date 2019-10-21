@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { openModal } from '../actions/modalActions';
 import { deleteReminders, deleteReminder } from '../actions/reminderActions';
@@ -160,6 +161,17 @@ class DayView extends Component {
     );
   }
 }
+
+DayView.propTypes = {
+  reminders: PropTypes.array,
+  currentView: PropTypes.object.isRequired,
+  openModal: PropTypes.func.isRequired,
+  deleteReminders: PropTypes.func.isRequired,
+  deleteReminder: PropTypes.func.isRequired,
+  getReminder: PropTypes.func.isRequired,
+  goToDay: PropTypes.func.isRequired,
+  goToCalendar: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => ({
   reminders: state.reminders.reminders,

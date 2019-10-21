@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-dropdown-select';
 import { connect } from 'react-redux';
 import { fetchCities } from '../actions/citiesActions';
@@ -278,6 +279,17 @@ class ReminderForm extends Component {
     );
   }
 }
+
+ReminderForm.propTypes = {
+  cities: PropTypes.array,
+  showModal: PropTypes.bool.isRequired,
+  currentReminder: PropTypes.object,
+  fetchCities: PropTypes.func.isRequired,
+  fetchWeather: PropTypes.func.isRequired,
+  postReminder: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  getReminder: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => ({
   cities: state.cities,

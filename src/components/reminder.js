@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Col, Row, Button } from 'react-bootstrap';
 import moment from 'moment';
 import tinycolor from 'tinycolor2';
@@ -71,6 +72,12 @@ const Reminder = (props) => {
       </td>
     </tr>
   );
+};
+
+Reminder.propTypes = {
+  reminder: PropTypes.object.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
 };
 
 export default Reminder;

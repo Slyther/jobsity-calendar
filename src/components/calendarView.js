@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { openModal } from '../actions/modalActions';
 import { deleteReminders } from '../actions/reminderActions';
@@ -115,6 +116,14 @@ class CalendarView extends Component {
     );
   }
 }
+
+CalendarView.propTypes = {
+  reminders: PropTypes.array,
+  openModal: PropTypes.func.isRequired,
+  deleteReminders: PropTypes.func.isRequired,
+  goToDay: PropTypes.func.isRequired
+};
+
 
 const mapStateToProps = (state) => ({
   reminders: state.reminders.reminders,

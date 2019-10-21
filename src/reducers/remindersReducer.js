@@ -24,19 +24,38 @@ export default (state = initialState, action) => {
         }
         return reminder;
       });
-      return {increment: state.increment, reminders: [...remindersWithWeatherData]};
+      return {
+        increment: state.increment,
+        reminders: [...remindersWithWeatherData],
+      };
     case NEW_REMINDER:
       const newReminder = { ...action.payload, reminderId: state.increment };
-      return {increment: state.increment+1, reminders: [...state.reminders, newReminder]};
+      return {
+        increment: state.increment + 1,
+        reminders: [...state.reminders, newReminder],
+      };
     case DELETE_REMINDERS:
-      return {increment: state.increment, reminders: state.reminders.filter((reminder) => reminder.date !== action.payload)};
+      return {
+        increment: state.increment,
+        reminders: state.reminders.filter(
+          (reminder) => reminder.date !== action.payload
+        ),
+      };
     case DELETE_REMINDER:
-      return {increment: state.increment, reminders: state.reminders.filter((reminder) => reminder.reminderId !== action.payload)};
+      return {
+        increment: state.increment,
+        reminders: state.reminders.filter(
+          (reminder) => reminder.reminderId !== action.payload
+        ),
+      };
     case EDIT_REMINDER:
       let filteredReminders = state.reminders.filter(
         (reminder) => reminder.reminderId !== action.payload.reminderId
       );
-      return {increment: state.increment, reminders: [...filteredReminders, action.payload]};
+      return {
+        increment: state.increment,
+        reminders: [...filteredReminders, action.payload],
+      };
     default:
       return state;
   }
