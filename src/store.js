@@ -4,7 +4,7 @@ import rootReducer from './reducers';
 
 const initialState = {
   cities: [],
-  reminders: [],
+  reminders: {increment: 0, reminders: []},
   currentReminder: { reminderId: -1 },
   showModal: false,
   currentView: { view: 'calendar', payload: '' },

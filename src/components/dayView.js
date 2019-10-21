@@ -162,7 +162,7 @@ class DayView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  reminders: state.reminders,
+  reminders: state.reminders.reminders,
   currentView: state.currentView,
 });
 

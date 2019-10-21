@@ -7,12 +7,12 @@ import {
 } from '../actions/types';
 import moment from 'moment';
 
-const initialState = [];
+const initialState = { increment: 0, reminders: [] };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_WEATHER:
-      let remindersWithWeatherData = state.map((reminder) => {
+      let remindersWithWeatherData = state.reminders.map((reminder) => {
         if (reminder.cityId === action.payload.city.id) {
           reminder.forecast = action.payload.list.filter((prediction) => {
             return (
@@ -24,18 +24,19 @@ export default (state = initialState, action) => {
         }
         return reminder;
       });
-      return [...remindersWithWeatherData];
+      return {increment: state.increment, reminders: [...remindersWithWeatherData]};
     case NEW_REMINDER:
-      return [...state, { ...action.payload, reminderId: state.length }];
+      const newReminder = { ...action.payload, reminderId: state.increment };
+      return {increment: state.increment+1, reminders: [...state.reminders, newReminder]};
     case DELETE_REMINDERS:
-      return state.filter((reminder) => reminder.date !== action.payload);
+      return {increment: state.increment, reminders: state.reminders.filter((reminder) => reminder.date !== action.payload)};
     case DELETE_REMINDER:
-      return state.filter((reminder) => reminder.reminderId !== action.payload);
+      return {increment: state.increment, reminders: state.reminders.filter((reminder) => reminder.reminderId !== action.payload)};
     case EDIT_REMINDER:
-      let filteredReminders = state.filter(
+      let filteredReminders = state.reminders.filter(
         (reminder) => reminder.reminderId !== action.payload.reminderId
       );
-      return [...filteredReminders, action.payload];
+      return {increment: state.increment, reminders: [...filteredReminders, action.payload]};
     default:
       return state;
   }

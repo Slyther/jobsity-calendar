@@ -117,7 +117,7 @@ class CalendarView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  reminders: state.reminders,
+  reminders: state.reminders.reminders,
 });
 
 export default connect(
