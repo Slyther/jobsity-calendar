@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { openModal } from '../actions/modalActions';
 import { deleteReminders, deleteReminder } from '../actions/reminderActions';
 import { getReminder } from '../actions/currentReminderActions';
-import { Button, Col, Row, Modal, Table } from 'react-bootstrap'
+import { goToDay, goToCalendar } from '../actions/currentViewActions';
+import { Button, Col, Row, Modal, Table, Nav } from 'react-bootstrap'
 import moment from 'moment';
 
 class DayView extends Component {
@@ -88,7 +89,18 @@ class DayView extends Component {
         });
     return (
       <div className="day-view-container">
-        <h5 className="text-center">{moment(this.props.currentView.payload).format('dddd, MMMM Do, YYYY')}</h5>
+        <Nav fill className="justify-content-center" activeKey="/home">
+            <Nav.Item>
+            <Button variant="light" onClick={() => this.props.goToDay(moment(this.props.currentView.payload).subtract(1, 'days').format('MM/DD/YYYY'))}>&lt;</Button>
+            </Nav.Item>
+            <Nav.Item>
+                <h5 className="text-center">{moment(this.props.currentView.payload).format('dddd, MMMM Do, YYYY')}</h5>
+            </Nav.Item>
+            <Nav.Item>
+            <Button variant="light" onClick={() => this.props.goToDay(moment(this.props.currentView.payload).add(1, 'days').format('MM/DD/YYYY'))}>&gt;</Button>
+            </Nav.Item>
+        </Nav>
+        
         <Table responsive>
             <thead>
                 <tr className="text-center">
@@ -125,9 +137,28 @@ class DayView extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-        <Button variant="primary" className="add-reminder" onClick={this.props.openModal}>
-          Add a Reminder
-        </Button>
+        <Nav fill className="justify-content-center" activeKey="/home">
+            <Nav.Item>
+                <Button variant="secondary" className="add-reminder" onClick={this.props.goToCalendar}>
+                    Go Back to Calendar
+                </Button>
+            </Nav.Item>
+            <Nav.Item>
+                <Button variant="primary" className="add-reminder" onClick={this.props.openModal}>
+                    Add a Reminder
+                </Button>
+            </Nav.Item>
+            {
+                reminders.length > 0 &&
+                <Nav.Item>
+                    <Button variant="danger" className="add-reminder" onClick={() => {
+                        this.setState({selectedDate: this.props.currentView.payload, showConfirmationModal: true, deleteAll: true, reminderToDelete: -1});
+                        }}>
+                        Clear All Reminders
+                    </Button>
+                </Nav.Item>
+            }
+        </Nav>
       </div>
     );
   }
@@ -138,4 +169,4 @@ const mapStateToProps = (state) => ({
   currentView: state.currentView
 });
 
-export default connect(mapStateToProps, { openModal, deleteReminders, deleteReminder, getReminder })(DayView);
+export default connect(mapStateToProps, { openModal, deleteReminders, deleteReminder, getReminder, goToDay, goToCalendar })(DayView);
