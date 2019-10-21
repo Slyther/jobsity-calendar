@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { openModal } from '../actions/modalActions';
-import { deleteReminders } from '../actions/reminderActions';
-import { goToDay } from '../actions/currentViewActions';
+import { openModal } from '../../actions/modalActions';
+import { deleteReminders } from '../../actions/reminderActions';
+import { goToDay } from '../../actions/currentViewActions';
 import { Button, Col, Row } from 'react-bootstrap';
-import ConfirmationModal from './confirmationModal';
+import ConfirmationModal from '../ConfirmationModal';
 import moment from 'moment';
 import Calendar from 'react-calendar';
 import tinycolor from 'tinycolor2';

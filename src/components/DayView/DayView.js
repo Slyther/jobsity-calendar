@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { openModal } from '../actions/modalActions';
-import { deleteReminders, deleteReminder } from '../actions/reminderActions';
-import { getReminder } from '../actions/currentReminderActions';
-import { goToDay, goToCalendar } from '../actions/currentViewActions';
+import { openModal } from '../../actions/modalActions';
+import { deleteReminders, deleteReminder } from '../../actions/reminderActions';
+import { getReminder } from '../../actions/currentReminderActions';
+import { goToDay, goToCalendar } from '../../actions/currentViewActions';
 import { Button, Table, Nav } from 'react-bootstrap';
-import ConfirmationModal from './confirmationModal';
-import Reminder from './reminder';
+import ConfirmationModal from '../ConfirmationModal';
+import Reminder from '../Reminder';
 import moment from 'moment';
 
 class DayView extends Component {

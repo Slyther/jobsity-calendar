@@ -4,7 +4,7 @@ import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'rc-time-picker/assets/index.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store';

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CalendarView from './components/calendarView';
-import DayView from './components/dayView';
-import ReminderForm from './components/reminderForm';
+import CalendarView from '../CalendarView/';
+import DayView from '../DayView/';
+import ReminderForm from '../ReminderForm';
 import { Container } from 'react-bootstrap';
 import './App.scss';
 
