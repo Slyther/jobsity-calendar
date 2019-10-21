@@ -32,7 +32,7 @@ class ReminderForm extends Component {
       return {
         selectedCity: [{name: props.currentReminder.city, id: props.currentReminder.cityId}],
         selectedDate: new Date(props.currentReminder.date),
-        selectedTime: moment(props.currentReminder.time),
+        selectedTime: moment(props.currentReminder.time, 'h:mm A'),
         reminderId: props.currentReminder.reminderId,
         reminderColor: props.currentReminder.reminderColor,
         title: props.currentReminder.title,
@@ -95,12 +95,25 @@ class ReminderForm extends Component {
     });
   }
 
+  onCloseModal = () => {
+    this.setState({
+      selectedCity: [],
+      selectedDate: new Date(),
+      selectedTime: moment().hour(0).minute(0),
+      reminderId: -1,
+      reminderColor: '#007bff',
+      title: '',
+    }, () => {
+      this.props.closeModal();
+    });
+  }
+
   render() {
     const colorBackgroud = {
       background: this.state.reminderColor
     };
     return (
-      <Modal show={this.props.showModal} onHide={this.props.closeModal}>
+      <Modal show={this.props.showModal} onHide={this.onCloseModal}>
       <Modal.Header closeButton>
         <Modal.Title>Add a Reminder</Modal.Title>
       </Modal.Header>
@@ -119,11 +132,11 @@ class ReminderForm extends Component {
                 this.state.displayColorPicker &&
                 <div className="picker-popover">
                   <div className="picker-cover" onClick={ () => this.setState({displayColorPicker: false}) }/>
-                    <SketchPicker 
-                      color={this.state.reminderColor}
-                      onChange={(color) => this.handleChange({target: { id: 'reminderColor', value: color.hex}})}
-                    />
-                  </div>
+                  <SketchPicker 
+                    color={this.state.reminderColor}
+                    onChange={(color) => this.handleChange({target: { id: 'reminderColor', value: color.hex}})}
+                  />
+                </div>
               }
             </Col>
           </Form.Group>
@@ -184,7 +197,7 @@ class ReminderForm extends Component {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={this.props.closeModal}>
+        <Button variant="secondary" onClick={this.onCloseModal}>
           Close
         </Button>
         <Button variant="primary" onClick={this.onSubmit}>

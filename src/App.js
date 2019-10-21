@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import store from './store';
+import { connect } from 'react-redux';
 import CalendarView from './components/calendarView';
+import DayView from './components/dayView';
 import ReminderForm from './components/reminderForm';
 import { Container } from 'react-bootstrap';
 import './App.scss';
@@ -9,14 +9,24 @@ import './App.scss';
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <Container>
+      <Container>
+        {
+          this.props.currentView.view === 'calendar' &&
           <CalendarView/>
-          <ReminderForm/>
-        </Container>
-      </Provider>
+        }
+        {
+          this.props.currentView.view === 'day' &&
+          <DayView/>
+        }
+        <ReminderForm/>
+      </Container>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = (state) => ({
+  currentView: state.currentView
+});
+
+export default connect(mapStateToProps, { })(App);

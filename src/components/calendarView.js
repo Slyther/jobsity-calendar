@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { openModal } from '../actions/modalActions';
 import { deleteReminders } from '../actions/reminderActions';
+import { goToDay } from '../actions/currentViewActions';
 import { Button, Col, Row, Modal } from 'react-bootstrap'
 import moment from 'moment';
 import Calendar from 'react-calendar';
@@ -21,7 +22,7 @@ class CalendarView extends Component {
         <Calendar
           calendarType="US"
           minDetail="month"
-          onChange={(date) => console.log(moment(date).format('MM/DD/YYYY'))}
+          onChange={(date) => this.props.goToDay(moment(date).format('MM/DD/YYYY'))}
           tileContent={({ date, view }) => {
             if(view === 'month') {
               const formattedDate = moment(date).format('MM/DD/YYYY');
@@ -111,4 +112,4 @@ const mapStateToProps = (state) => ({
   reminders: state.reminders
 });
 
-export default connect(mapStateToProps, { openModal, deleteReminders })(CalendarView);
+export default connect(mapStateToProps, { openModal, deleteReminders, goToDay })(CalendarView);

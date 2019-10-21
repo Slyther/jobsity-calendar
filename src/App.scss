@@ -99,9 +99,10 @@ textarea {
       position: absolute;
       left: 15px;
       z-index: 1;
+      font-weight: 600;
     }
     .today {
-      background: rgb(35, 139, 244);
+      background: #238bf473;
       width: 26px;
       height: 26px;
       border-radius: 50%;
@@ -115,8 +116,11 @@ textarea {
       color: black;
     }
     &.react-calendar__month-view__days__day--weekend {
-      color: rgb(209, 0, 0);
+      color: #3d76b7;
       background: rgb(240, 240, 240);
+      &:hover {
+        background: rgb(220, 220, 220);
+      }
     }
     &.react-calendar__month-view__days__day--neighboringMonth{
       color: rgb(109, 109, 109);
@@ -203,6 +207,13 @@ textarea {
   top: 7px;
 }
 
+.color-choice-noclick {
+  width: 30%;
+  height: 24px;
+  border: solid 2px gray;
+  border-radius: 5px;
+}
+
 .hide-mobile {
   @media (max-width: 767px) {
     display: none;
@@ -226,6 +237,41 @@ textarea {
     width: 40%;
     &:before {
       content: "X";
+    }
+  }
+}
+
+.day-view-container {
+  max-width: 1050px;
+  margin: 50px auto;
+}
+
+.bordered {
+  border: 2px solid white;
+  width: 40px;
+  height: 40px;
+  @media (max-width: 767px) {
+    // width: 25px;
+    // height: 25px;
+    // font-size: 8px;
+  }
+}
+
+.reminder-dayview-element {
+  font-weight: 600;
+  margin: 10px auto;
+  max-width: 95%;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.forecast-item {
+  @media (max-width: 767px) {
+    font-size: 11px;
+    .weather-icon {
+      max-width: 30px;
+      max-height: 30px;
     }
   }
 }
