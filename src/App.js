@@ -10,23 +10,19 @@ class App extends Component {
   render() {
     return (
       <Container>
-        {
-          this.props.currentView.view === 'calendar' &&
-          <CalendarView/>
-        }
-        {
-          this.props.currentView.view === 'day' &&
-          <DayView/>
-        }
-        <ReminderForm/>
+        {this.props.currentView.view === 'calendar' && <CalendarView />}
+        {this.props.currentView.view === 'day' && <DayView />}
+        <ReminderForm />
       </Container>
     );
   }
 }
 
-
 const mapStateToProps = (state) => ({
-  currentView: state.currentView
+  currentView: state.currentView,
 });
 
-export default connect(mapStateToProps, { })(App);
+export default connect(
+  mapStateToProps,
+  {}
+)(App);

@@ -6,9 +6,9 @@ import modalReducer from './modalReducer';
 import currentViewReducer from './currentViewReducer';
 
 export default combineReducers({
-    reminders: remindersReducer,
-    cities: citiesReducer,
-    currentReminder: currentReminderReducer,
-    showModal: modalReducer,
-    currentView: currentViewReducer,
+  reminders: remindersReducer,
+  cities: citiesReducer,
+  currentReminder: currentReminderReducer,
+  showModal: modalReducer,
+  currentView: currentViewReducer,
 });

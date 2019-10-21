@@ -6,7 +6,10 @@ import tinycolor from 'tinycolor2';
 const Reminder = (props) => {
   const cardStyles = {
     background: props.reminder.reminderColor,
-    color: tinycolor(props.reminder.reminderColor).getBrightness() < 128 ? 'white' : 'black'
+    color:
+      tinycolor(props.reminder.reminderColor).getBrightness() < 128
+        ? 'white'
+        : 'black',
   };
   let styledWeather = props.reminder.forecast.map((x) => {
     return (

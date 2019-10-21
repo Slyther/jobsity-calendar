@@ -6,10 +6,10 @@ const initialState = [];
 let simplifiedCities = cities.default;
 
 export default (state = initialState, action) => {
-    switch(action.type) {
-        case FETCH_CITIES:
-            return [...simplifiedCities];
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    case FETCH_CITIES:
+      return [...simplifiedCities];
+    default:
+      return state;
+  }
+};

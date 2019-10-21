@@ -43,11 +43,15 @@ textarea {
   resize: none;
 }
 
-.rc-time-picker-input, .rc-time-picker-panel-input {
+.rc-time-picker-input,
+.rc-time-picker-panel-input {
   font-size: 16px;
 }
 
-.rc-time-picker-input, .react-datepicker-ignore-onclickoutside, .react-dropdown-select, .react-datepicker__input-container > input {
+.rc-time-picker-input,
+.react-datepicker-ignore-onclickoutside,
+.react-dropdown-select,
+.react-datepicker__input-container > input {
   border-radius: 4px !important;
   border: 1px solid rgb(206, 212, 218) !important;
   color: rgb(33, 37, 41) !important;
@@ -57,19 +61,21 @@ textarea {
   transition-duration: 0.15s, 0.15s;
   transition-property: border-color, box-shadow;
   transition-timing-function: ease-in-out, ease-in-out;
-  &:hover{
+  &:hover {
     border-color: rgb(206, 212, 218) !important;
   }
-  &:focus, &:focus-within{
+  &:focus,
+  &:focus-within {
     color: #495057 !important;
     background-color: #fff !important;
     border-color: #80bdff !important;
     outline: 0 !important;
-    box-shadow: 0 0 0 .2rem rgba(0,123,255,.25) !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
   }
 }
 
-.react-datepicker-wrapper, .rc-time-picker {
+.react-datepicker-wrapper,
+.rc-time-picker {
   width: 100% !important;
 }
 
@@ -77,7 +83,7 @@ textarea {
   width: 1050px;
   border: none;
   margin: 50px auto;
-  .react-calendar__navigation__label{
+  .react-calendar__navigation__label {
     &:disabled {
       background: white;
       color: black;
@@ -122,7 +128,7 @@ textarea {
         background: rgb(220, 220, 220);
       }
     }
-    &.react-calendar__month-view__days__day--neighboringMonth{
+    &.react-calendar__month-view__days__day--neighboringMonth {
       color: rgb(109, 109, 109);
     }
     // &--active,  &--active:focus {
@@ -229,14 +235,14 @@ textarea {
   height: 19px;
   padding: 0;
   &:before {
-    content: "Clear Day";
+    content: 'Clear Day';
   }
   @media (max-width: 767px) {
     top: 4px;
     left: 25px;
     width: 40%;
     &:before {
-      content: "X";
+      content: 'X';
     }
   }
 }
@@ -250,11 +256,6 @@ textarea {
   border: 2px solid white;
   width: 40px;
   height: 40px;
-  @media (max-width: 767px) {
-    // width: 25px;
-    // height: 25px;
-    // font-size: 8px;
-  }
 }
 
 .reminder-dayview-element {
@@ -277,16 +278,16 @@ textarea {
 }
 
 .table-responsive {
-  table tbody, table thead
-  {
+  table tbody,
+  table thead {
     display: block;
   }
-  table tbody 
-  {
+  table tbody {
     overflow: auto;
     max-height: 55vh;
   }
-  th, td {
+  th,
+  td {
     width: 1050px;
   }
 }
