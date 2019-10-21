@@ -9,6 +9,7 @@ import { Button, Table, Nav } from 'react-bootstrap';
 import ConfirmationModal from '../ConfirmationModal';
 import Reminder from '../Reminder';
 import moment from 'moment';
+import './DayView.scss';
 
 class DayView extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class DayView extends Component {
 
     return (
       <div className="day-view-container">
-        <Nav fill className="justify-content-center" activeKey="/home">
+        <Nav fill className="justify-content-center">
           <Nav.Item>
             <Button
               variant="light"
@@ -122,7 +123,7 @@ class DayView extends Component {
             this.props.deleteReminder(this.state.reminderToDelete)
           }
         />
-        <Nav fill className="justify-content-center" activeKey="/home">
+        <Nav fill className="justify-content-center">
           <Nav.Item>
             <Button
               variant="secondary"
@@ -170,7 +171,7 @@ DayView.propTypes = {
   deleteReminder: PropTypes.func.isRequired,
   getReminder: PropTypes.func.isRequired,
   goToDay: PropTypes.func.isRequired,
-  goToCalendar: PropTypes.func.isRequired
+  goToCalendar: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -41,12 +41,12 @@ ConfirmationModal.propTypes = {
   onCancel: PropTypes.func.isRequired,
   deleteAll: PropTypes.bool,
   onDeleteAll: PropTypes.func.isRequired,
-  onDeleteOne: PropTypes.func
+  onDeleteOne: PropTypes.func,
 };
 
 ConfirmationModal.defaultProps = {
   deleteAll: true,
-  onDeleteOne: (f) => f
+  onDeleteOne: (f) => f,
 };
 
 export default ConfirmationModal;

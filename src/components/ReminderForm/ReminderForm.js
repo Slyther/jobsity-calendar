@@ -12,6 +12,9 @@ import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import DatePicker from 'react-datepicker';
 import { SketchPicker } from 'react-color';
+import 'rc-time-picker/assets/index.css';
+import 'react-datepicker/dist/react-datepicker.css';
+import './ReminderForm.scss';
 
 class ReminderForm extends Component {
   constructor(props) {
@@ -288,7 +291,7 @@ ReminderForm.propTypes = {
   fetchWeather: PropTypes.func.isRequired,
   postReminder: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
-  getReminder: PropTypes.func.isRequired
+  getReminder: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

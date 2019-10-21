@@ -1,0 +1,70 @@
+.css-93ilmd-DropDown {
+  top: 43px !important;
+  width: 300.66668701171875px !important;
+}
+
+.rc-time-picker-clear {
+  display: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.rc-time-picker-input,
+.rc-time-picker-panel-input {
+  font-size: 16px;
+}
+
+.rc-time-picker-input,
+.react-datepicker-ignore-onclickoutside,
+.react-dropdown-select,
+.react-datepicker__input-container > input {
+  border-radius: 4px !important;
+  border: 1px solid rgb(206, 212, 218) !important;
+  color: rgb(33, 37, 41) !important;
+  height: 38px !important;
+  width: 100% !important;
+  transition-delay: 0s, 0s;
+  transition-duration: 0.15s, 0.15s;
+  transition-property: border-color, box-shadow;
+  transition-timing-function: ease-in-out, ease-in-out;
+  &:hover {
+    border-color: rgb(206, 212, 218) !important;
+  }
+  &:focus,
+  &:focus-within {
+    color: #495057 !important;
+    background-color: #fff !important;
+    border-color: #80bdff !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+  }
+}
+
+.react-datepicker-wrapper,
+.rc-time-picker {
+  width: 100% !important;
+}
+
+.picker-cover {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.picker-popover {
+  position: absolute;
+  z-index: 2;
+}
+
+.color-choice {
+  width: 30%;
+  height: 24px;
+  border: solid 4px gray;
+  border-radius: 5px;
+  position: relative;
+  top: 7px;
+}

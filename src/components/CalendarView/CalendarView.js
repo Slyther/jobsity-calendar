@@ -9,6 +9,7 @@ import ConfirmationModal from '../ConfirmationModal';
 import moment from 'moment';
 import Calendar from 'react-calendar';
 import tinycolor from 'tinycolor2';
+import './CalendarView.scss';
 
 class CalendarView extends Component {
   constructor(props) {
@@ -121,9 +122,8 @@ CalendarView.propTypes = {
   reminders: PropTypes.array,
   openModal: PropTypes.func.isRequired,
   deleteReminders: PropTypes.func.isRequired,
-  goToDay: PropTypes.func.isRequired
+  goToDay: PropTypes.func.isRequired,
 };
-
 
 const mapStateToProps = (state) => ({
   reminders: state.reminders.reminders,

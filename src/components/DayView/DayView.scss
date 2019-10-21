@@ -1,0 +1,19 @@
+.day-view-container {
+  max-width: 1050px;
+  margin: 50px auto;
+}
+
+.table-responsive {
+  table tbody,
+  table thead {
+    display: block;
+  }
+  table tbody {
+    overflow: auto;
+    max-height: 55vh;
+  }
+  th,
+  td {
+    width: 1050px;
+  }
+}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Col, Row, Button } from 'react-bootstrap';
 import moment from 'moment';
 import tinycolor from 'tinycolor2';
+import './Reminder.scss';
 
 const Reminder = (props) => {
   const cardStyles = {
@@ -77,7 +78,7 @@ const Reminder = (props) => {
 Reminder.propTypes = {
   reminder: PropTypes.object.isRequired,
   onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Reminder;

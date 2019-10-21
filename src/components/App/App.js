@@ -20,8 +20,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-  currentView: PropTypes.object.isRequired
-}
+  currentView: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   currentView: state.currentView,
