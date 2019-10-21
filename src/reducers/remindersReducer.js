@@ -245,7 +245,7 @@ export default (state = initialState, action) => {
             let remindersWithWeatherData = state.map(reminder => {
                 if(reminder.cityId === action.payload.city.id){
                     reminder.forecast = action.payload.list.filter((prediction) => {
-                        return moment(reminder.date).diff(moment(prediction.dt_txt).startOf('day')) === 0
+                        return moment(reminder.date, 'MM/DD/YYYY').diff(moment(prediction.dt_txt).startOf('day')) === 0
                     });
                 }
                 return reminder;

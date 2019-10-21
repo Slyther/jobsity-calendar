@@ -5,7 +5,7 @@ export const fetchWeather = (cityId) => (dispatch) => {
     let weather = [];
     fetch(`https://api.openweathermap.org/data/2.5/weather/?units=metric&id=${cityId}&appid=1c0e103c32f64cd4428126e2363e482c`)
         .then(res => res.json())
-        .then(currentWeather => weather = [{dt_txt: moment().startOf('day'), weather: currentWeather.weather}])
+        .then(currentWeather => weather = [{dt_txt: moment().startOf('day'), weather: currentWeather.weather, main: currentWeather.main}])
         .then(() => {
             fetch(`https://api.openweathermap.org/data/2.5/forecast/?units=metric&id=${cityId}&appid=1c0e103c32f64cd4428126e2363e482c`)
                 .then(res2 => res2.json())

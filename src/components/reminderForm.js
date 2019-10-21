@@ -3,6 +3,7 @@ import Select from 'react-dropdown-select';
 import { connect } from 'react-redux';
 import { fetchCities } from '../actions/citiesActions';
 import { postReminder, fetchWeather } from '../actions/reminderActions';
+import { getReminder } from '../actions/currentReminderActions';
 import { closeModal } from '../actions/modalActions';
 import { List } from 'react-virtualized';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap'
@@ -28,6 +29,16 @@ class ReminderForm extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
+    if(props.currentReminder.reminderId === -1 && state.reminderId !== -1){
+      return {
+        selectedCity: [],
+        selectedDate: new Date(),
+        selectedTime: moment().hour(0).minute(0),
+        reminderId: -1,
+        reminderColor: '#007bff',
+        title: '',
+      }
+    }
     if (props.currentReminder.reminderId !== state.reminderId) {
       return {
         selectedCity: [{name: props.currentReminder.city, id: props.currentReminder.cityId}],
@@ -92,6 +103,7 @@ class ReminderForm extends Component {
       this.props.postReminder(reminder);
       this.props.fetchWeather(reminder.cityId);
       this.props.closeModal();
+      this.props.getReminder({reminderId: -1});
     });
   }
 
@@ -105,6 +117,7 @@ class ReminderForm extends Component {
       title: '',
     }, () => {
       this.props.closeModal();
+      this.props.getReminder({reminderId: -1});
     });
   }
 
@@ -215,4 +228,4 @@ const mapStateToProps = (state) => ({
   currentReminder: state.currentReminder,
 });
 
-export default connect(mapStateToProps, { fetchCities, fetchWeather, postReminder, closeModal })(ReminderForm);
+export default connect(mapStateToProps, { fetchCities, fetchWeather, postReminder, closeModal, getReminder })(ReminderForm);
