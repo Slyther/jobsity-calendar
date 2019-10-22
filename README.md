@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Jobsity Calendar Challenge
 
-## Available Scripts
+A calendar where you can add reminders
+
+### Stack
+
+* The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* State management was done with [Redux](https://github.com/reduxjs/redux) and [React Redux](https://github.com/reduxjs/react-redux).
+* General component styling and structuring was done with the help of [React-Boostrap](https://github.com/react-bootstrap/react-bootstrap).
+* Calendar logic was done by implementing and altering the rendering of [React-Calendar](https://github.com/wojtekmaj/react-calendar#readme).
+* Minor color swapping logic for text visibility was implemented using [TinyColor](https://github.com/bgrins/TinyColor).
+* Unit Testing is being done with [Jest](https://github.com/facebook/jest) and [Enzyme](https://github.com/airbnb/enzyme).
+
+Form Components:
+* [React Color](https://github.com/casesandberg/react-color) for the color picker.
+* [React Date Picker](https://github.com/Hacker0x01/react-datepicker) for the datepicker.
+* [TimePicker](https://github.com/react-component/time-picker) for the  time picker.
+* [react-dropdown-select](https://github.com/sanusart/react-dropdown-select#readme) for the city autosuggest, along with [React Virtualized](https://github.com/bvaughn/react-virtualized) for the virtualization of the over 160 thousand cities.
+
+
 
 In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.<br />
+Runs the app.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Layout
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The following shows the Calendar View of the app. Reminders can be added, reminders for a given date can be cleared, and dates can be clicked on to go to their respective day view.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<img src="https://i.ibb.co/kHwSTkf/Screenshot-2019-10-21-React-App.png" alt="Screenshot-2019-10-21-React-App">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The following shows the ReminderForm component, in its reminder creation mode. A color can be picked for the reminder tag, as well as a title, date, and time. <br />
+The city can be searched through text and selected from the given options, but it has to be a city selected from the list. <br />
+Only the city and title fields are validated to be required, since the time and date fields have default values.
 
-### `yarn eject`
+<img src="https://i.ibb.co/k6s27LT/Screenshot-2019-10-21-React-App-3.png" alt="Screenshot-2019-10-21-React-App-3">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The following shows the Day View of the app. Reminders are shown in full detail within a scrollable list, showing the weather of the date and city selected for the reminder. <br />
+Past reminders don't have weather info, and current day reminders only have one weather item. <br />
+Reminders can be added, edited, and deleted one by one or by clearing the schedule for the entire day.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="https://i.ibb.co/VJhCkQn/Screenshot-2019-10-21-React-App-1.png" alt="Screenshot-2019-10-21-React-App-1">
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="https://i.ibb.co/ckyXv5W/Screenshot-2019-10-21-React-App-2.png" alt="Screenshot-2019-10-21-React-App-2">
 
-## Learn More
+The following shows the ReminderForm component, in its edit reminder mode. All information can be modified. The same validations from the creation mode apply.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<img src="https://i.ibb.co/6ZkK98S/Screenshot-2019-10-21-React-App-4.png" alt="Screenshot-2019-10-21-React-App-4">

@@ -195,7 +195,9 @@ class ReminderForm extends Component {
     return (
       <Modal show={this.props.showModal} onHide={this.onCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add a Reminder</Modal.Title>
+          <Modal.Title>
+            {this.state.reminderId !== -1 ? 'Edit Reminder' : 'Add a Reminder'}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form
