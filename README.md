@@ -32,7 +32,8 @@ Launches the test runner in the interactive watch mode.<br />
 
 ### Layout
 
-The following shows the Calendar View of the app. Reminders can be added, reminders for a given date can be cleared, and dates can be clicked on to go to their respective day view.
+The following shows the Calendar View of the app. Reminders can be added, reminders for a given date can be cleared, and dates can be clicked on to go to their respective day view. <br />
+If there are more reminders than can be shown in any given date, a custom tile will be shown instead, signaling that more reminders not currently visible exist.
 
 <img src="https://i.ibb.co/kHwSTkf/Screenshot-2019-10-21-React-App.png" alt="Screenshot-2019-10-21-React-App">
 
