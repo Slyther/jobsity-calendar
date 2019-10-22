@@ -1,51 +1,56 @@
 import React from 'react';
-import ReminderForm from './ReminderForm';
+import { ReminderForm } from './ReminderForm';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { Provider } from 'react-redux';
-import store from '../../store';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
+import * as cities from '../../json/city.list.min.json';
 
 Enzyme.configure({ adapter: new Adapter() });
-describe('<MyComponent />', () => {
-  it('renders without crashing', () => {
-    const wrapper = shallow(
-      <Provider store={store}>
-        <ReminderForm />
-      </Provider>
+describe('<ReminderForm />', () => {
+  const fetchCitiesMock = jest.fn();
+  const fetchWeatherMock = jest.fn();
+  const postReminderMock = jest.fn();
+  const closeModalMock = jest.fn();
+  const getReminderMock = jest.fn();
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(
+      <ReminderForm
+        cities={cities.default}
+        showModal={true}
+        currentReminder={{ reminderId: -1 }}
+        reminders={[]}
+        fetchCities={fetchCitiesMock}
+        fetchWeather={fetchWeatherMock}
+        postReminder={postReminderMock}
+        closeModal={closeModalMock}
+        getReminder={getReminderMock}
+      />
     );
+  });
+  it('renders without crashing', () => {
     expect(wrapper).toBeDefined();
   });
 
-  // it('renders without crashing', () => {
-  //   const wrapper = mount(
-  //     <Provider store={store}>
-  //       <ReminderForm />
-  //     </Provider>
-  //   );
-  //   expect(wrapper).toBeDefined();
-  // });
-  // const onChangeMock = jest.fn();
+  it('calls the fetchCities on mount', () => {
+    expect(fetchCitiesMock.mock.calls.length).toBeGreaterThan(0);
+  });
 
-  //   const wrapper = mount(
-  //     <ReminderForm
-  //       items={['dba', 'devops', 'frontend', 'backend']}
-  //       placeholder="Category"
-  //       onChange={onChangeMock}
-  //     />,
-  //   );
+  it('adds validation errors on form submit without required fields', () => {
+    const submitButton = wrapper.find('#submitButton').at(0);
+    submitButton.simulate('click');
+    expect(wrapper.state('showErrors')).toEqual(true);
+  });
 
-  //   expect(onChangeMock.mock.calls).toHaveLength(0);
+  it('adds validation error for title on form submit without title', () => {
+    const submitButton = wrapper.find('#submitButton').at(0);
+    submitButton.simulate('click');
+    expect(wrapper.state('errors')).toHaveProperty('title');
+  });
 
-  //   const input = wrapper.find('input');
-
-  //   input.simulate('focus');
-  //   input.simulate('change', { target: { value: 'd' } });
-
-  //   expect(onChangeMock.mock.calls).toHaveLength(1);
-
-  //   input.simulate('keydown', { keyCode: 40 });
-  //   input.simulate('keydown', { key: 'Enter' });
-
-  //   expect(onChangeMock.mock.calls).toHaveLength(2);
+  it('adds validation error for selectedCity on form submit without selectedCity', () => {
+    const submitButton = wrapper.find('#submitButton').at(0);
+    submitButton.simulate('click');
+    expect(wrapper.state('errors')).toHaveProperty('selectedCity');
+  });
 });

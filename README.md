@@ -1,6 +1,6 @@
 ## Jobsity Calendar Challenge
 
-A calendar where you can add reminders
+A cross-browser, mobile-friendly calendar where you can add reminders.
 
 ### Stack
 
@@ -17,7 +17,7 @@ Form Components:
 * [TimePicker](https://github.com/react-component/time-picker) for the  time picker.
 * [react-dropdown-select](https://github.com/sanusart/react-dropdown-select#readme) for the city autosuggest, along with [React Virtualized](https://github.com/bvaughn/react-virtualized) for the virtualization of the over 160 thousand cities.
 
-
+## All mandatory features, as well as the bonus tasks, were completed.
 
 In the project directory, you can run:
 

@@ -16,7 +16,7 @@ import 'rc-time-picker/assets/index.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import './ReminderForm.scss';
 
-class ReminderForm extends Component {
+export class ReminderForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -339,7 +339,7 @@ class ReminderForm extends Component {
           <Button variant="secondary" onClick={this.onCloseModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={this.onSubmit}>
+          <Button variant="primary" id="submitButton" onClick={this.onSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -352,6 +352,7 @@ ReminderForm.propTypes = {
   cities: PropTypes.array,
   showModal: PropTypes.bool.isRequired,
   currentReminder: PropTypes.object,
+  reminders: PropTypes.array,
   fetchCities: PropTypes.func.isRequired,
   fetchWeather: PropTypes.func.isRequired,
   postReminder: PropTypes.func.isRequired,
