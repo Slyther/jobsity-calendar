@@ -32,7 +32,7 @@ class CalendarView extends Component {
         })
         .map((reminder) => (
           <div
-            key={reminder.title}
+            key={reminder.reminderId}
             style={{
               background: reminder.reminderColor,
               borderColor: reminder.reminderColor,

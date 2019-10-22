@@ -40,6 +40,9 @@ textarea {
     outline: 0 !important;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
   }
+  &.is-invalid {
+    border-color: #dc3545 !important;
+  }
 }
 
 .react-datepicker-wrapper,

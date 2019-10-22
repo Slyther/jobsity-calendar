@@ -1,17 +1,17 @@
 import React from 'react';
-import App from './App';
+import ReminderForm from './ReminderForm';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
 import store from '../../store';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 it('renders without crashing', () => {
-  const wrapper = shallow(
+  const wrapper = mount(
     <Provider store={store}>
-      <App />
+      <ReminderForm />
     </Provider>
   );
   expect(wrapper).toBeDefined();

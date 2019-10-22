@@ -7,7 +7,7 @@ import { postReminder, fetchWeather } from '../../actions/reminderActions';
 import { getReminder } from '../../actions/currentReminderActions';
 import { closeModal } from '../../actions/modalActions';
 import { List } from 'react-virtualized';
-import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import { Modal, Button, Form, Row, Col, Alert } from 'react-bootstrap';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import DatePicker from 'react-datepicker';
@@ -28,6 +28,9 @@ class ReminderForm extends Component {
       reminderId: -1,
       reminderColor: '#007bff',
       title: '',
+      errors: {},
+      showErrors: false,
+      showInvalidReminder: false,
     };
   }
   componentDidMount() {
@@ -67,6 +70,9 @@ class ReminderForm extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
+    if (this.state.showErrors) {
+      this.checkForm();
+    }
   };
 
   customDropdownRenderer = ({ props, state, methods }) => {
@@ -93,11 +99,42 @@ class ReminderForm extends Component {
         height={280}
         rowCount={options.length}
         rowHeight={35}
-        rowRenderer={rowRenderer}></List>
+        rowRenderer={rowRenderer}
+      />
     );
   };
 
+  checkForm = () => {
+    let errors = {};
+    let showErrors = false;
+    if (typeof this.state.selectedCity[0] === 'undefined') {
+      errors.selectedCity = 'Please select a city!';
+      showErrors = true;
+    } else {
+      errors.selectedCity = '';
+    }
+    if (this.state.title.length === 0) {
+      errors.title = 'Please give your reminder a title!';
+      showErrors = true;
+    } else {
+      errors.title = '';
+    }
+    this.setState({ errors: errors, showErrors: showErrors });
+    return showErrors;
+  };
+
+  validateReminder = (reminder) => {
+    let isInvalid = this.props.reminders.some(
+      (rem) => rem.date === reminder.date && rem.time === reminder.time
+    );
+    this.setState({ showInvalidReminder: isInvalid });
+    return isInvalid;
+  };
+
   onSubmit = (e) => {
+    if (this.checkForm()) {
+      return;
+    }
     e.preventDefault();
     let reminder = {
       date: moment(this.state.selectedDate).format('MM/DD/YYYY'),
@@ -109,6 +146,9 @@ class ReminderForm extends Component {
       reminderColor: this.state.reminderColor,
       forecast: [],
     };
+    if (reminder.reminderId === -1 && this.validateReminder(reminder)) {
+      return;
+    }
     this.setState(
       {
         selectedCity: [],
@@ -207,7 +247,15 @@ class ReminderForm extends Component {
                   placeholder="Write a reminder title (max 30 characters)..."
                   maxLength={30}
                   rows={2}
-                  required></Form.Control>
+                  isInvalid={
+                    'title' in this.state.errors &&
+                    this.state.errors.title.length > 0
+                  }
+                  required
+                />
+                <Form.Control.Feedback type="invalid">
+                  {this.state.errors.title}
+                </Form.Control.Feedback>
               </Col>
             </Form.Group>
             <Form.Group as={Row} controlId="selectedDate">
@@ -259,16 +307,31 @@ class ReminderForm extends Component {
                   placeholder="Select a city..."
                   labelField="name"
                   dropdownHandle={false}
+                  isInvalid={true}
                   dropdownRenderer={this.customDropdownRenderer}
+                  className={`form-control ${
+                    'selectedCity' in this.state.errors &&
+                    this.state.errors.selectedCity.length > 0
+                      ? 'is-invalid'
+                      : ''
+                  }`}
                   onChange={(values) =>
                     this.handleChange({
                       target: { id: 'selectedCity', value: values },
                     })
                   }
                 />
+                <div className="invalid-feedback" style={{ display: 'block' }}>
+                  {this.state.errors.selectedCity}
+                </div>
               </Col>
             </Form.Group>
           </Form>
+          {this.state.showInvalidReminder && (
+            <Alert variant="danger">
+              A reminder with this time and date already exists!
+            </Alert>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={this.onCloseModal}>
@@ -298,6 +361,7 @@ const mapStateToProps = (state) => ({
   cities: state.cities,
   showModal: state.showModal,
   currentReminder: state.currentReminder,
+  reminders: state.reminders.reminders,
 });
 
 export default connect(
